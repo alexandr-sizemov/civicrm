@@ -27,6 +27,8 @@ module.exports = function(config) {
       'ang/**/*.js',
       'tests/karma/lib/*.js',
       'tests/karma/**/*.js',
+      'tools/extensions/org.alexandr.sizemov.membershiplist/ang/membershiplist.js',
+      'tools/extensions/org.alexandr.sizemov.membershiplist/ang/membershiplist/MembershipsController.js',
       'ang/**/*.html'
     ],
     preprocessors : {

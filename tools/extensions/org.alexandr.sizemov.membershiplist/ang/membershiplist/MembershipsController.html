@@ -1,0 +1,82 @@
+<div class="crm-container">
+  <div crm-ui-debug="myContact"></div>
+
+    <form name="myForm" crm-ui-id-scope>
+
+      <div class="crm-block" ng-form="searchForm" crm-ui-id-scope>
+        <div class="crm-group">
+            <label for="membershipStartDate">{{ts('Start date')}} : </label>
+            <input name="membershipStartDate" crm-ui-datepicker="{time: false}" ng-model="filter.start_date" />
+            <label for="membershipEndDate">{{ts('End date')}} : </label>
+            <input 
+              name="membershipEndDate" 
+              ng-model="filter.end_date"
+              crm-ui-datepicker="{time: false}" 
+              crm-ui-validate="filter.end_date != false"
+              crm-ui-validate-name="myError" />
+          <button ng-click="search()">{{ts('Search')}}</button>
+        </div>
+      </div>
+    </form>
+    <div crm-ui-accordion="{title: ts('Memberships')}">
+      <table>
+        <thead class="sticky">
+            <tr>
+                <th class="reports-header">
+                    <div class="sticky-header" style="position: fixed; display: none; top: 23px; margin-left: -10px; margin-right: -18px; padding: 3px 38px 3px 10px;"></div>{{ts('Name')}}</th>
+                <th class="reports-header">
+                    <div class="sticky-header" style="position: fixed; display: none; top: 23px; margin-left: -10px; margin-right: -18px; padding: 3px 37px 3px 10px;">
+                    </div>{{ts('Membership Type')}}</th>
+                <th class="reports-header">
+                    <div class="sticky-header" style="position: fixed; display: none; top: 23px; margin-left: -10px; margin-right: -18px; padding: 3px 35px 3px 10px;">
+                    </div>{{ts('Relationship Name')}}</th>
+                <th class="reports-header">
+                    <div class="sticky-header" style="position: fixed; display: none; top: 23px; margin-left: -10px; margin-right: -18px; padding: 3px 42px 3px 10px;">
+                    </div>{{ts('Start date')}}</th>
+                <th class="reports-header">
+                    <div class="sticky-header" style="position: fixed; display: none; top: 23px; margin-left: -10px; margin-right: -18px; padding: 3px 37px 3px 10px;">
+                    </div>{{ts('End date')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr class="crm-report" ng-class-odd="'odd-row'" ng-class-even="'even-row'" ng-repeat="membership in membershipList.values">
+            <td class="crm-report-civicrm_membership_membership_type_id">{{membership.membership_name}}</td>
+            <td class="crm-report-civicrm_membership_membership_type_id">{{membership.source}}</td>
+            <td class="crm-report-civicrm_membership_membership_type_id">{{membership.relationship_name}}</td>
+            <td class="crm-report-civicrm_membership_membership_type_id">{{membership.start_date}}</td>
+            <td class="crm-report-civicrm_membership_membership_type_id">{{membership.end_date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+                
+<!--     <div crm-ui-accordion="{title: ts('About Me')}">
+      <div class="crm-block">
+        <div class="crm-group">
+          <div crm-ui-field="{name: 'myForm.first_name', title: ts('Name'), help: hs('full_name')}">
+            <input
+              crm-ui-id="myForm.first_name"
+              name="first_name"
+              ng-model="myContact.first_name"
+              class="crm-form-text"
+              placeholder="{{ts('First')}}"
+              />
+            <input
+              crm-ui-id="myForm.last_name"
+              name="last_name"
+              ng-model="myContact.last_name"
+              class="crm-form-text"
+              placeholder="{{ts('Last')}}"
+              />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button ng-click="save()">{{ts('Save')}}</button>
+      </div>
+    </div> -->
+
+
+</div>

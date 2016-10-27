@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension key="org.alexandr.sizemov.membershiplist" type="module">
+  <file>membershiplist</file>
+  <name>Awesome Memberships List</name>
+  <description></description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Alexandr Sizemov</author>
+    <email>alexandr.sizemov</email>
+  </maintainer>
+  <urls>
+    <url desc="Memberships List">#</url>
+    <url desc="Documentation">#</url>
+    <url desc="Support">#</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2016-10-23</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.2</ver>
+  </compatibility>
+  <comments>This is a new, undeveloped module</comments>
+  <civix>
+    <namespace>CRM/Membershiplist</namespace>
+  </civix>
+</extension>

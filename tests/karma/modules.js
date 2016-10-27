@@ -9,5 +9,6 @@ CRM.angular = {
     'crmAttachment',
     'crmUi',
     'crmUtil',
+    'membershiplist'
   ]
 };
