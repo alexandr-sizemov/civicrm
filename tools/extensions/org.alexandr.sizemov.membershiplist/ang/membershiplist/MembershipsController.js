@@ -1,3 +1,9 @@
+ /*
+  * Membership conroller
+  *  Provides memberships listing with date filter
+  */
+
+
 (function(angular, $, _) {
 
   angular.module('membershiplist').config(function($routeProvider) {
@@ -16,16 +22,37 @@
     }
   );
 
-  // Base search controller
+  // Base search controller 'Class'
   function BaseSearchController(){
 
+    // fields returned by the api
     this.returnFields = [];
+
+    // base search configuration
     this.searchObject = {'options':{}};
-    this.filterOperators = {};
 
+    // base filters operators
+    this.filterOperators = {
+      start_date:'='
+    };
+
+    // given filters and operations on filters builds the search object
+    // es:
+    // @param filters: {start_date: "2011-10-06", end_date: "2016-10-11"}
+    // @param filterOperators: {start_date: ">", end_date: "<"}
+    // return  
+    // {
+    //   sequential: 1,
+    //   end_date: { '<': "2016-10-19"},
+    //   start_date: {'>': "2016-10-03"},
+    //   options: {
+    //     return: ["membership_name", ...]
+    //     }
+    // } 
     this.composeSearch = function(filters, filterOperators){
-
       var searchFilters = {}
+
+      // for each filter
       _.keys(filters).forEach(function(filter){
         if(filters[filter] && filters[filter].length > 0){
           var currentFilter = {}
@@ -33,6 +60,7 @@
           searchFilters[filter] = currentFilter
         }
       });
+
       return _.assign(this.searchObject, searchFilters);
     }
   }
@@ -42,7 +70,7 @@
   MembershipsController.prototype.constructor = BaseSearchController;
 
   function MembershipsController($scope, crmApi, crmStatus, membershipList){
-    // redefine or extends return fields
+    // redefine or extends the return fields
     this.returnFields = this.returnFields.concat(['membership_name', 'contact_id','start_date','end_date','status_id','source','relationship_name'])
 
     // extends base search
